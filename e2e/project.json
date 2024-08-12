@@ -1,0 +1,29 @@
+{
+  "name": "e2e",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "e2e/src",
+  "tags": [],
+  "implicitDependencies": ["monrepo-example"],
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "monrepo-example:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "monrepo-example:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "monrepo-example:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
