@@ -1,7 +1,7 @@
 {
-  "name": "monrepo-example",
-  "$schema": "node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "./src",
+  "name": "store-front2",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "store-front2/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -11,11 +11,11 @@
       "defaultConfiguration": "production",
       "options": {
         "target": "web",
-        "outputPath": "dist/monrepo-example",
-        "main": "src/main.tsx",
-        "tsConfig": "tsconfig.app.json",
-        "rspackConfig": "rspack.config.js",
-        "assets": ["src/favicon.ico", "src/assets"]
+        "outputPath": "dist/store-front2",
+        "main": "store-front2/src/main.tsx",
+        "tsConfig": "store-front2/tsconfig.app.json",
+        "rspackConfig": "store-front2/rspack.config.js",
+        "assets": ["store-front2/src/favicon.ico", "store-front2/src/assets"]
       },
       "configurations": {
         "development": {
@@ -31,27 +31,27 @@
     "serve": {
       "executor": "@nx/rspack:dev-server",
       "options": {
-        "buildTarget": "monrepo-example:build:development"
+        "buildTarget": "store-front2:build:development"
       },
       "configurations": {
         "development": {},
         "production": {
-          "buildTarget": "monrepo-example:build:production"
+          "buildTarget": "store-front2:build:production"
         }
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "monrepo-example:build",
+        "buildTarget": "store-front2:build",
         "spa": true
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectName}"],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "jest.config.app.ts"
+        "jestConfig": "store-front2/jest.config.ts"
       }
     }
   }
